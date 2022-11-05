@@ -12,6 +12,13 @@
             <label for="description">Опис страви:</label>
             <textarea name="description" required>{{$menu_item->description}}</textarea>
 
+            <label for="category_id">Категорія:</label>
+            <select class="@error('category_id') is-invalid @enderror" id="category_id" name="category_id" required>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}" @if($category->id == $menu_item->category_id) selected @endif>{{ $category->title }}</option>
+                @endforeach
+            </select>
+
             <label for="weight">Вага:</label>
             <input type="text" name="weight" value="{{$menu_item->weight}}" required>
 

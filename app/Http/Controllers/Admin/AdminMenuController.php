@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MenuCategory;
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,8 @@ class AdminMenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('admin.menu.create');
+        $categories = MenuCategory::all();
+        return view('admin.menu.create', compact('categories'));
     }
 
     /**
@@ -35,6 +37,7 @@ class AdminMenuController extends Controller
         $request->validate([
             'title'=>'required',
             'description'=>'required',
+            'category_id'=>'required',
             'weight'=>'required',
             'price'=>'required',
             'image' => 'image'
@@ -55,7 +58,8 @@ class AdminMenuController extends Controller
     public function edit($id)
     {
         $menu_item = MenuItem::where('id', $id)->first();
-        return view('admin.menu.edit', compact('menu_item'));
+        $categories = MenuCategory::all();
+        return view('admin.menu.edit', compact('menu_item', 'categories'));
     }
 
 
@@ -71,6 +75,7 @@ class AdminMenuController extends Controller
         $request->validate([
             'title'=>'required',
             'description' => 'required',
+            'category_id'=>'required',
             'weight' => 'required|integer',
             'price' => 'required|integer',
             'image' => 'image'

@@ -11,7 +11,11 @@ class MenuItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['description', 'weight', 'price', 'image'];
+    protected $fillable = ['title', 'description', 'category_id', 'weight', 'price', 'image'];
+
+    public function menu_category(){
+        return $this->belongsTo(MenuCategory::class);
+    }
 
     public static function uploadImage(Request $request, $image = null)
     {

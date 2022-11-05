@@ -1,28 +1,27 @@
 @extends('layouts.index')
 
 @section('content')
-    <h1 style="text-align: center">Меню</h1>
-    <div>
+        <h1 style="text-align: center">Меню</h1>
         <ul class="products clearfix">
-            @for($i = 0; $i<10; $i++)
+            @foreach($menu as $menu_item)
                 <li class="product-wrapper">
                     <a href="" class="product">
                         <div class="product-photo">
-                            <img src="{{asset('food-delivery/public/assets/images/img1.jpg')}}" alt="">
+                            <img src="{{$menu_item->getImage()}}" alt="">
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.</p>
+                        <h1>{{$menu_item->title}}</h1>
+                        <p>{{$menu_item->description}}</p>
                         <div class="price">
-                            <h3>300 г. / 100 грн</h3>
-                            <form action="#" method="post">
+                            <h3>{{$menu_item->weight}} гр. / {{$menu_item->price}} грн</h3>
+                            <form action="{{ route('addToCart') }}" method="post">
+                                @csrf
+                                <input type="text" name="menu_item_id" value="{{ $menu_item->id }}" hidden>
                                 <input type="submit" value="В корзину"/>
                             </form>
                         </div>
                     </a>
                 </li>
-            @endfor
+            @endforeach
         </ul>
     </div>
 @endsection

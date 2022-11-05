@@ -9,16 +9,16 @@
 <body>
 <header>
     <div class="logo">
-        <a href="{{ route('home') }}">
+        <a href="{{ route('menu') }}">
             <i class="fa fa-home fa-4x">Food Delivery</i>
         </a>
     </div>
     <div class="menu">
         <ul>
             <li><a href="{{ route('menu') }}">Меню</a></li>
-            <li><a href="#">Контакти</a></li>
+            <li><a href="{{ route('contacts') }}">Контакти</a></li>
             @if(isset(Auth::user()->name))
-                <li><a href="#">Корзина</a></li>
+                <li><a href="{{ route('showCart') }}">Корзина</a></li>
                 <li><a href="{{ route('logout') }}">Вийти</a></li>
             @else
                 <li><a href="{{ route('login.create') }}">Увійти</a></li>
@@ -26,6 +26,11 @@
         </ul>
     </div>
 </header>
+@if (session()->has('success'))
+    <div class="alert alert-success " role="alert">
+        <p>{{ session()->get('success')}}</p>
+    </div>
+@endif
 @yield('content')
 </body>
 </html>

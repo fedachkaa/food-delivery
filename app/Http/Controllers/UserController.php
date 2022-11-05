@@ -27,7 +27,7 @@ class UserController extends Controller
             'password'=>bcrypt($request->password),
         ]);
         Auth::login($user);
-        return redirect()->home();
+        return redirect()->route('menu');
     }
 
     public function loginForm()
@@ -52,7 +52,7 @@ class UserController extends Controller
                 if(!session()->has(Auth::user()->email)){
                     session()->put(Auth::user()->email, []);
                 }
-                return redirect()->home();
+                return redirect()->route('menu');
             }
         }
 
