@@ -21,6 +21,11 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request){
+        if(!isset(Auth::user()->id))
+        {
+            $msg = "Авторизуйтесь, щоб додати в корзину.";
+            return redirect()->route('menu')->with('warning', $msg);
+        }
         $menu_item_id = $request->menu_item_id;
         $user = Auth::user()->id;
         $menu_item = MenuItem::where('id', $menu_item_id)->first();

@@ -2,6 +2,12 @@
 
 @section('content')
         <h1 style="text-align: center">Меню</h1>
+        <ul class="categories">
+            <li><a href="{{ route('menu') }}">Усі страви</a></li>
+            @foreach($categories as $category)
+                <li><a href="{{ route('showCategory', ['category'=>$category->id]) }}">{{ $category->title }}</a> </li>
+            @endforeach
+        </ul>
         <ul class="products clearfix">
             @foreach($menu as $menu_item)
                 <li class="product-wrapper">

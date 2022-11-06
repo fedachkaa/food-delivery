@@ -24,9 +24,15 @@
             </tbody>
         </table>
     </div>
-    <form action="{{ route('takeOrder', ['id'=>$cart->id]) }}" method="post" style="text-align: right">
-        @csrf
-        <input type="submit" value="Прийняти замовлення">
-    </form>
+    <div style="text-align: right; margin-right: 10px">
+        <h3>Ім'я клієнта: {{ $user->name }}.</h3>
+        <h3>Електронна пошта клієнта: {{ $user->email }}.</h3>
+        <h3>Номер телефону клієнта: {{ $user->phone_number }}.</h3>
+        <form action="{{ route('takeOrder', ['id'=>$cart->id]) }}" method="post">
+            @csrf
+            <input type="submit" value="Прийняти замовлення">
+        </form>
+    </div>
+
 
 @endsection

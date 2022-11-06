@@ -18,12 +18,14 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
+            'phone_number'=>'required|min:10|unique:users',
             'password'=>'required|confirmed',
         ]);
 
         $user = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
+            'phone_number'=>$request->phone_number,
             'password'=>bcrypt($request->password),
         ]);
         Auth::login($user);

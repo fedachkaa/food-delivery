@@ -1,3 +1,5 @@
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
 body{
     margin: 0px;
     background: linear-gradient( rgba(255, 230, 230, 0.77) 0%, white 50%);
@@ -183,4 +185,39 @@ table {
 }
 tr {
     background: #f8eaea;
+}
+.alert-warning {
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    color: #8a6d3b;
+}
+
+.contacts{
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+a{
+    color: #000;
+}
+
+ul.categories {
+    text-align: center;
+    padding: 4px;
+    margin: 40px;
+}
+
+ul.categories li, ul.categories a {
+    display: inline;
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #faa39a;
+    border-radius: 10px;
+    width: auto;
+    border: 0;
+    padding: 10px;
+    color: #000000;
+    font-size: 14px;
+    margin: 10px;
 }

@@ -13,7 +13,15 @@ class AdminMenuController extends Controller
     public function index()
     {
         $menu = MenuItem::all();
-        return view('admin.menu.show-menu', compact('menu'));
+        $categories = MenuCategory::all();
+        return view('admin.menu.show-menu', compact('menu', 'categories'));
+    }
+
+    public function show($id){
+        $menu = MenuItem::where('category_id', $id)->get();
+        $categories = MenuCategory::all();
+        return view('admin.menu.show-menu', compact('menu', 'categories'));
+
     }
 
     /**

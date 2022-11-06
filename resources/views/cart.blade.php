@@ -41,6 +41,6 @@
             @endif
         </div>
     @else
-        <h1>В корзині нічого немає...</h1>
+        <h1 style="text-align: center">В корзині нічого немає...</h1>
     @endif
 @endsection

@@ -15,9 +15,10 @@
     </div>
     <div class="menu">
         <ul>
+            <li><a href="{{ route('categories.index') }}">Категорії</a></li>
             <li><a href="{{ route('menu.index') }}">Меню</a></li>
             <li><a href="{{ route('showOrders') }}">Замовлення</a></li>
-            <li><a href="#">Клієнти</a></li>
+            <li><a href="{{ route('showClients') }}">Клієнти</a></li>
             <li><a href="{{ route('logout') }}">Вийти</a></li>
         </ul>
     </div>

@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('food-delivery/public/assets/css/style.css')}}">
-    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
     <title>Food Delivery</title>
 </head>
 <body>
@@ -29,6 +28,11 @@
 @if (session()->has('success'))
     <div class="alert alert-success " role="alert">
         <p>{{ session()->get('success')}}</p>
+    </div>
+@endif
+@if (session()->has('warning'))
+    <div class="alert alert-warning " role="alert">
+        <p>{{ session()->get('warning')}}</p>
     </div>
 @endif
 @yield('content')

@@ -7,6 +7,12 @@
             <input type="submit" value="Додати страву">
         </form>
     </div>
+    <ul class="categories">
+        <li><a href="{{ route('menu.index') }}">Усі страви</a></li>
+        @foreach($categories as $category)
+            <li><a href="{{ route('menu.show', ['menu'=>$category->id]) }}">{{ $category->title }}</a> </li>
+        @endforeach
+    </ul>
     <div>
         <ul class="products clearfix">
             @foreach($menu as $menu_item)
